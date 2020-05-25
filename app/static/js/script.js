@@ -14,12 +14,18 @@ document.querySelector(".user-icon").addEventListener("click",function(){
 })
 
 
-function appendElement(text){
+function appendElement(text,img){
   var div = document.createElement("div");
   var a = document.createElement("a");
   a.href= `/products/groceries/${text.toLowerCase()}`
   var textNode = document.createTextNode(text);
   a.appendChild(textNode)
+
+  var img_tag = document.createElement("img");
+  img_tag.src =img;
+  img_tag.style.height="20px";
+  img_tag.style.width = "20px";
+  div.appendChild(img_tag)
   div.appendChild(a)
   div.classList = "results"
   document.querySelector(".search_results").appendChild(div);
@@ -28,7 +34,6 @@ function appendElement(text){
 function removeElement(){
     var element = document.querySelectorAll(".results")
     for (i=0; i<element.length;i++){
-      
     element[i].parentNode.removeChild(element[i])
     }
   
@@ -42,16 +47,16 @@ document.getElementsByTagName("input")[0].addEventListener("keypress", function(
   }
   document.querySelector(".search_results").style.display = "block"
   request = new XMLHttpRequest();
-  if (query !==""){
-  request.open('GET', 'http://localhost:5000/api/products/groceries/'+query)
+  request.open('GET', '/api/products/groceries/'+query)
   request.onload= function(){
   var data = JSON.parse(request.responseText)
   data.forEach(result => {
+    removeElement()
       appendElement(result.name)
 })
+
    }
   request.send()
-  } 
 
   
 if (e.keyCode === 13 ){
