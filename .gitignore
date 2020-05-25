@@ -1,4 +1,4 @@
 .env
-app/__pycache__/*
 venv/*
-
+*.pyc
+bootstrap.css
