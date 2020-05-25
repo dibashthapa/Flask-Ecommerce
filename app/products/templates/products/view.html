@@ -1,0 +1,21 @@
+{% include "header.html" %}
+
+
+<div class="products">
+	<div class="products-list">
+		<div class="images" data-id="{{results['item'][0]['id']}}">
+		  <img src="{{results['item'][0]['img_url']}}" height="250px" width="250px">
+		</div>
+			<div class="product-options">
+			  <div class="product-name">{{results['item'][0]['name']}}  <span class="product-price">{{results['item'][0]['price']}}</span></div >
+			  
+			  <div class="product-description">
+			  	Aliquip anim. Adipisicing dolor excepteur esse mollit quis excepteur pariatur exercitation elit duis in voluptate sunt ut incididunt sint esse aliquip eiusmod ad aliqua laborum dolor eiusmod commodo consequat.
+			  </div>
+			<div class="product-cart">
+				Cart
+			</div>
+		</div>
+		</div>
+	</div>
+</div>
