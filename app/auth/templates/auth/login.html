@@ -1,0 +1,28 @@
+{%include "base.html"%}
+
+
+
+
+<div class="form-container">
+	<form method="POST">
+		<div class="form-input">
+			<label for="email">Email</label>
+			<br>
+			<input id="email" type="email" name="email" placeholder="Enter your email">
+		</div>
+
+		<div class="form-input">
+			<label for="email">Password</label>
+			<br>
+			<input type="password" name="password" placeholder="Enter your password">
+		</div>
+
+		<div class="form-input">
+			<button type="submit">Login</button>
+		</div>
+	</form>
+
+</div>
+<script src="{{url_for('static', filename='js/header.js')}}"> </script>
+</body>
+</html>
