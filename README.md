@@ -18,7 +18,7 @@ python -v
 Now open terminal and clone this github project or download
 
 ```
-git clone https://github.com/dibashthapa/Flask-Ecommerce
+git clone -b development https://github.com/dibashthapa/Flask-Ecommerce
 ```
 
 
