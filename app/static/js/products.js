@@ -1,6 +1,10 @@
 let counter=0;
 
 const quantity=10;
+
+const url = window.location.href;
+
+const product_table = url.split("/")[4]
 window.addEventListener('load',load)
  window.onscroll = function(){
 if (window.innerHeight+window.scrollY >= document.body.offsetHeight){
@@ -18,14 +22,17 @@ function load(){
 
 function getProducts(start,end){
 	 request = new XMLHttpRequest();
-	 request.open('GET', `/api/products/groceries?start=${start}&end=${end}`)
+	 request.open('GET', `/api/products/${product_table}?start=${start}&end=${end}`)
 	 request.onload = function(){
+     if (this.status == 404) {
+     alert("404 error")
+     }
+     else {
 	 	var data = JSON.parse(request.responseText)
-	 	console.log(data)
 	 	data.forEach(result=>{
-add_contents(result.img_url, result.name)
-
+          add_contents(result.img_url, result.name)
 	 	})
+     }
 	 }
 	 request.send()
 }

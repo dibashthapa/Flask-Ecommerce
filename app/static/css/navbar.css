@@ -1,0 +1,91 @@
+
+.header {
+margin-top:40px;
+}
+.navbar {
+margin-bottom:60px;
+}
+.navbar nav ul li {
+list-style:none;
+display:inline-block;
+margin:10px;
+}
+
+#logo{
+font-size:20px;
+font-weight:bold;
+}
+
+#logo-color {
+  color:#17a589;
+}
+
+a{
+text-decoration:none;
+color:#000;
+}
+
+.dropdown{
+margin-left:40px;
+position:relative;
+}
+
+.dropdown:after, .languages-list:after {
+    content:"\f0d7";
+    font-family:'Font Awesome 5 Free';
+    font-weight:bold;
+    position: absolute;
+    top: 13px;
+    right: 10px;
+    z-index: 5;
+    color:#17a589;
+}
+.dropdown select  {
+  border:  1px solid rgb(241, 241, 241);
+  padding:10px;
+  border-radius:10px;
+  color:#17a589;
+  box-shadow:rgba(0, 0, 0, 0.08) 0 5px 10px;
+  background-color:transparent;
+}
+
+
+.dropdown select option , .languages-list select option {
+width:150px;
+}
+
+.dropdown select, .languages-list select {
+-moz-appearance:none;
+}
+
+.dropdown select option {
+background-color:#fff;
+width:200px;
+}
+
+.profile-menu {
+position:absolute;
+right:10%;
+z-index:10px;
+}
+
+.profile-menu .profile-image {
+font-size:20px;
+}
+
+.profile-menu #profile-options {
+  visibility:hidden;
+  box-shadow:rgba(0,0,0,0.5) 0 5px 10px;
+  padding:10px 20px;
+  border-radius:10px;
+  position:absolute;
+}
+
+.profile-menu .profile-option{
+  margin-bottom:5px;
+}
+
+ .profile-option a:hover {
+color:#17a589;
+cursor:pointer;
+}

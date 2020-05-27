@@ -1,45 +1,8 @@
-<html>
-<head>
-<title>Welcome</title>
-<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
-</head>
-<script src="https://kit.fontawesome.com/c96d3752b6.js" crossorigin="anonymous"></script>
-<body>
-<div>
-  <div class="header"></div>
-<div class="navbar">
-<nav>
-    <ul>
-      <li class="navbar-item">
-        <a href="/" id="logo">Nep<span id="logo-color">Bazar</span></a>
-      </li>
+{% include "general_base.html" %}
 
-    <li>
-      <div class="dropdown">
-        <select id="" name="">
-          <option value="Furniture">Furniture</option>
-          <option value="Medical">Medical</option>
-          <option value="Grocery">Grocery</option>
-        </select>
-      </div>
-    </li>
-    <li>
-    <div class="profile-menu">
-      <div class="profile-image">
-    <i
-    class="fas fa-user-circle user-icon" ></i>
-  </div>
-      <div id="profile-options" class="hide">
-      <div class="profile-option">Login</div>
-      <div class="profile-option">Register</div>
-      </div>
-      </div>
-    </li>
-    </ul>  
-  </nav>  
-</div>
 <div class="background-image"></div>
   <div class="search-bar">
+    
  <input type="text" placeholder="Search your item .."  >
   <i class="fas fa-search search-button icon"></i>
 <div class="search_results"></div>
@@ -47,6 +10,9 @@
 
 </div>
 <div>
-  <script src={{url_for('static', filename='js/script.js')}}></script>
+
+
+  <script src={{url_for('static', filename='js/header.js')}}></script>
+   <script src={{url_for('static', filename='js/search.js')}}></script>
 </body>
 </html>

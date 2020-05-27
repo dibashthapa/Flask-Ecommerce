@@ -1,7 +1,9 @@
-  <html>
+<html>
 <head>
-<title>Grocery - NepBazar </title>
-<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+  
+ <title>Auth | Nepbazar</title>
+<link rel="stylesheet" href="{{url_for('auth_bp.static', filename='navbar.css')}}">
+<link rel="stylesheet" href="{{url_for('auth_bp.static', filename='style.css')}}">
 </head>
 <script src="https://kit.fontawesome.com/c96d3752b6.js" crossorigin="anonymous"></script>
 <body>
@@ -30,11 +32,19 @@
     class="fas fa-user-circle user-icon" ></i>
   </div>
       <div id="profile-options" class="hide">
-      <div class="profile-option">Login</div>
-      <div class="profile-option">Register</div>
+      <div class="profile-option"><a href="/auth/login">Login</a></div>
+      <div class="profile-option"><a href="/auth/register">register</a></div>
       </div>
       </div>
+    </li>
+
+    <li>
+      <i class="fas fa-shopping-cart"></i>
     </li>
     </ul>  
   </nav>  
 </div>
+
+
+
+

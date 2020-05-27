@@ -1,6 +1,4 @@
-{% include "header.html" %}
-
-
+{%  include "base.html" %}
 <div class="products">
 	<div class="products-list">
 		<div class="images" data-id="{{results['item'][0]['id']}}">
@@ -19,3 +17,7 @@
 		</div>
 	</div>
 </div>
+
+ <script src={{url_for('static', filename='js/header.js')}}></script>
+</body>
+</html>

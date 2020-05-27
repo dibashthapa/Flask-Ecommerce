@@ -18,7 +18,7 @@ python -v
 Now open terminal and clone this github project or download
 
 ```
-git clone https://github.com/dibashthapa/Flask-Ecommerce
+git clone -b development https://github.com/dibashthapa/Flask-Ecommerce
 ```
 
 
@@ -32,6 +32,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 export FLASK_APP=app.py
 export FLASK_ENV=development
+flask run
 ```
 --- 
 

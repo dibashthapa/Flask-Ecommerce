@@ -25,8 +25,4 @@ class Product(Database):
         db = self.db
         db.execute(f"SELECT * FROM {self.product_name}")
         products = db.fetchall()
-        return products
-
-
-
-
+        return products;
