@@ -13,7 +13,3 @@ app.register_blueprint(api_bp, url_prefix="/api")
 app.register_blueprint(products_bp, url_prefix="/products")
 app.register_blueprint(auth_bp, url_prefix="/auth")
 app.register_blueprint(cart_bp, url_prefix="/cart")
-
-@app.errorhandler(404)
-def invalid_route(e):
-    return(e)

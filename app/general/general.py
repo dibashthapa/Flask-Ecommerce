@@ -2,11 +2,10 @@ from flask import Flask, Blueprint, render_template, request, jsonify
 
 import requests
 import json
-general_bp = Blueprint("general_bp", __name__ , template_folder="templates/general/", static_folder="static")
-
+general_bp = Blueprint("general_bp", __name__ , template_folder="templates/general", static_folder="static/css")
 @general_bp.route("/")
 def home():
-    return render_template("index.html")
+	return render_template("index.html")
 
 @general_bp.route("/search")
 def search():
