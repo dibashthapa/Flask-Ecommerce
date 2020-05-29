@@ -1,8 +1,8 @@
-from flask import Flask, Blueprint, render_template, request, jsonify
+from flask import Flask, Blueprint, render_template, request, jsonify, url_for, redirect
 
 import requests
 import json
-general_bp = Blueprint("general_bp", __name__ , template_folder="templates/general", static_folder="static/css")
+general_bp = Blueprint("general_bp", __name__ , template_folder="templates/general", static_url_path="/static")
 @general_bp.route("/")
 def home():
 	return render_template("index.html")

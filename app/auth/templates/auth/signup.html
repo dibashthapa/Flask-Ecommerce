@@ -1,31 +1,30 @@
 {% include "auth_base.html"%}
 
 <div class="form-container">
-	<form method="POST">
-		<div class="form-input">
-			<label for="name">Name</label>
-			<input id="name" type="text" name="name" placeholder="Enter your name">
-		</div>
+	<div class="form-container">
+	<form action="" method="POST">
+  <div class="input-field">
+    <input type="text" id="name" required />
+    <label for="name">Name</label>
+  </div>
+	
+	<br>
+    <div class="input-field">
+    <input type="text" id="name" required />
+    <label for="email">Email</label>
+   </div>
+   <br>
+      <div class="input-field">
+    <input type="text" id="name" required />
+    <label for="email">Password</label>
+   </div>
+	<br>
+   <div class="input-field">
+   	<button>Create an account</button>
+   </div>
 
-		<div class="form-input">
-			<label for="email">Email</label>
-			<input id="email" type="email" name="email" placeholder="Enter your email">
-		</div>
-
-		<div class="form-input">
-			<label for="password">Password</label>
-			<input id="password" type="password" name="password" placeholder="Enter your password">
-		</div>
-
-		<div class="form-input">
-			<label for="repeat-password">Repeat Password</label>
-			<input type="pasword" placeholder="Repeat assword Again">
-		</div>
-		<div class="form-input">
-			<button type="submit">Create Account</button>
-		</div>
-	</form>
-
+</form>
+</div>
 </div>
 <script src="{{url_for('static', filename='js/header.js')}}"> </script>
 </body>

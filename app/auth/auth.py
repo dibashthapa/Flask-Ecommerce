@@ -11,6 +11,6 @@ def signup():
 		name = request.form['name']
 		email = request.form['email']
 		password = request.form['password']
-		return jsonify("success")
+		return jsonify(name, email, password)
 	else:
 		return render_template("signup.html")

@@ -1,25 +1,25 @@
 {%include "auth_base.html" %}
 
 <div class="form-container">
-	<form method="POST">
-		<div class="form-input">
-			<label for="email">Email</label>
-			<br>
-			<input id="email" type="email" name="email" placeholder="Enter your email">
-		</div>
+	<form action="">
+    <div class="input-field">
+    <input type="text" id="name" required />
+    <label for="email">Email</label>
+   </div>
+   <br>
+      <div class="input-field">
+    <input type="text" id="name" required />
+    <label for="email">Password</label>
+   </div>
+	<br>
+   <div class="input-field">
+   	<button>Login</button>
+   </div>
 
-		<div class="form-input">
-			<label for="email">Password</label>
-			<br>
-			<input type="password" name="password" placeholder="Enter your password">
-		</div>
-
-		<div class="form-input">
-			<button type="submit">Login</button>
-		</div>
-	</form>
-
+</form>
 </div>
+
+
 <script src="{{url_for('static', filename='js/header.js')}}"> </script>
 </body>
 </html>

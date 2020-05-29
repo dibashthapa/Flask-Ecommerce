@@ -1,8 +1,30 @@
 {% include "base.html" %}
-<div class="products-list">
- </div>
 
- <script src={{url_for('static', filename='js/header.js')}}></script>
-   <script src={{url_for('static', filename='js/products.js')}}></script>
-</body>
-</html>
+<div class="container">
+	<div class="row">
+		{% if products|length == 3 : %}
+		{% for items in products: %}
+		<div class="col-md-3">
+			<div class="card card-product-grid">
+				<a href="#">
+					<img src="{{items.img_url}}" alt="">
+				</a>
+				<figcaption class="info-wrap">
+					<a href="#"	class="title">{{items.name}}</a>
+	               <ul class="rating-wrap">
+	               	<ul class="rating-stars">
+	          <li style="width:80%" class="stars-active"> 
+              <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i>
+            </li>
+            <li>
+              <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i> 
+             </li>
+	               	</ul>
+	               </ul>			
+				</figcaption>
+			</div>
+		</div>
+		{% endfor %}
+		{% endif %}
+	</div>
+</div>

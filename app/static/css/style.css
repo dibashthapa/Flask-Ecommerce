@@ -1,0 +1,9 @@
+.search-results {
+	position: absolute;
+	z-index: 100;
+}
+
+.search-results .row .col{
+	cursor:pointer;
+
+}
