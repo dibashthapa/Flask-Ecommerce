@@ -3,12 +3,18 @@ $(document).ready(function() {
     $(document).on('click', '.dropdown-menu', function (e) {
       e.stopPropagation();
     });
+  $(".search-results").css("display", "none")
+$("body").on("click", function(){
+  $(".search-results").css("display", "none")
+})
+
 	if($('[data-toggle="tooltip"]').length>0) {  // check if element exists
 		$('[data-toggle="tooltip"]').tooltip()
 	} 
 
 $(".search input").on("keyup", function(e){
     value = $(".search input").val();
+      $(".search-results").css("display", "block")
     $.ajax({
         url:`/api/products/groceries/${value.toLowerCase()}`
     }).done(function(data){

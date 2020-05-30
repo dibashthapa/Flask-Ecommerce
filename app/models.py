@@ -28,15 +28,17 @@ class Product(Database):
         return products
 
 class User(Database):
-    def __init__(self, **kwargs):
-        email = kwargs['email']
-        name = kwargs['name']
-        password = kwargs['password']
+    def __init__(self):
         self.db= Database.get_cursor()
 
-    def get_users(self):
-        db = self.db
-        db.execute(f"SELECT")
+    def add_user(self,name , email, password):
+        """
+        Add new User with name, 
+        email and pasword
+        """
+        db  = self.db
+        db.execute(f"INSERT INTO ")
+
 
 
     
