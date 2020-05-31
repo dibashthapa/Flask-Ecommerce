@@ -1,16 +1,34 @@
-from flask import Blueprint, Flask , jsonify, render_template, session, request, redirect
+from flask import Blueprint, Flask , jsonify, render_template, session, request, redirect, url_for
+from app.models import User
+auth_bp = Blueprint("auth_bp", __name__, template_folder="templates/auth")
 
-auth_bp = Blueprint("auth_bp", __name__, template_folder="templates/auth", static_folder="static/css", url_prefix="/auth")
 @auth_bp.route("/login", methods=["GET", "POST"])
 def main():
-	return render_template("login.html")
+	if request.method == "POST":
+		user= User()
+		email = request.form['email']
+		password = request.form['password']
+		result = user.verify(email, password)
+		if result == True:
+			session['email'] = email
+			return redirect(url_for("general_bp.home"))
+		else:
+			return "Incorrect Details"
+	return render_template("login.html", title="Login")
 
 @auth_bp.route("/register", methods=["GET","POST"])
 def signup():
 	if request.method == "POST":
-		name = request.form['name']
+		user= User()
+		fname = request.form['fname']
+		lname = request.form['lname']
 		email = request.form['email']
 		password = request.form['password']
-		return jsonify("success")
+		user.add(fname,lname, email, password)
+		return redirect(url_for("auth_bp.main"))
 	else:
-		return render_template("signup.html")
+		return render_template("signup.html", title ="register")
+
+@auth_bp.route("/forgot_password", methods=["GET", "POST"])
+def forgot_pass():
+	return render_template("forgot_password.html", title="forgot password")
