@@ -2,34 +2,67 @@ import sqlite3
 import os
 DATABASE = os.path.join(os.path.dirname(__file__), 'site.db')
 
+def connect(database = DATABASE):
+    c = sqlite3.connect(database)
+    c.row_factory = sqlite3.Row
+    return c
 
-class Database:
-    def __init__(self):
-        db= DATABASE
-        self.conn = sqlite3.connect(db, check_same_thread=False)
-        self.cursor = self.conn.cursor()
-        self.cursor.row_factory = sqlite3.Row
 
-    def get_cursor(self):
-        return self.cursor
-
-class Product(Database):
-    def __init__(self, product_name):
+class Product:
+    def __init__(self, product_name=None, db=connect()):
         self.product_name = product_name
-        self.db = Database().get_cursor()
+        self.cursor = db.cursor()
 
     def return_items(self):
         """
         Returns all the rows from 
         the given table
         """
-        db = self.db
-        db.execute(f"SELECT * FROM {self.product_name}")
-        products = db.fetchall()
+        cur = self.cursor
+        cur.execute(f"SELECT * FROM {self.product_name}")
+        products = cur.fetchall()
         return products
 
+    def show_all_items(self):
+        cur = self.cursor
+        sql = """
+        SELECT id,name,price, img_url FROM apparels
+        UNION
+        SELECT id,name,price, img_url FROM fashion
+        UNION
+        SELECT id,name, price, img_url FROM bicycles
+        UNION 
+        SELECT id,name, price, img_url FROM jewelry
+        ORDER BY name
+         """
+        cur.execute(sql)
+        results = cur.fetchall()
+        return results
 
+class User:
+    def __init__(self, db=connect()):
+        self.cursor = db.cursor()
+        self.db = db
 
+    def add(self, fname, lname, email, password):
+        sql = f"INSERT INTO User(fname, lname, email, password) VALUES(?,?,?,?)"
+        data=(fname, lname, email, password)
+        cur = self.cursor
+        cur.execute(sql, data)
+        self.db.commit()
+        
+
+    def verify(self, email ,password):
+        sql = f"SELECT email , password FROM User WHERE email='{email}' AND password='{password}'"
+        cur = self.cursor
+        cur.execute(sql)
+        result = cur.fetchall()
+        row_count =  len(result)
+        print(row_count)
+        if row_count == 1 :
+            return True
+        else:
+            return False
 
 
 

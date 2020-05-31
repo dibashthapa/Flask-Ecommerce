@@ -22,9 +22,8 @@ def main(product):
 		 title=product_name , 
 		 length=len(product_items))
 	
-
 @products_bp.route("/<product>/<product_item>")
-def view(product, product_item):
+def view_product(product, product_item):
 	product = Product(product)
 	product_items = product.return_items()
 	product_items = [dict(p) for p in product.return_items()] 
@@ -36,4 +35,16 @@ def view(product, product_item):
 			results={"item":product_name, 
 			"keyword":product_item}, 
 			title=product_item) 
+
+@products_bp.route("/view")
+def view():
+	id = int(request.args.get("id"))
+	product = Product()
+	product_items = product.show_all_items()
+	product_items = [dict(p) for p in product_items if p['id'] == id]
+	print(product_items)
+	return render_template("view.html", 
+			results={"item":product_items},
+			title="Product View"
+			)
 
