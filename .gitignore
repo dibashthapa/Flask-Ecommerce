@@ -2,3 +2,4 @@
 venv/*
 *.pyc
 bootstrap.css
+*.csv
