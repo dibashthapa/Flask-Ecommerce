@@ -1,5 +1,4 @@
-## Production Link
-https://flaskecommerceapp.herokuapp.com/
+
 
 ## Prerequisites
 The following software is required to be installed on your system before you procced:
