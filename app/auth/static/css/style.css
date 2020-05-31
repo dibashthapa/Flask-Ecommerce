@@ -1,0 +1,56 @@
+.form-container{
+	width:100%;
+	margin:auto;
+}
+button{
+	height: 30px;
+	width:250px;
+	border:1px solid #17a589;
+	color:#17a589;
+	margin:0;
+	padding:0;
+}
+
+
+
+
+.input-field{
+  position: relative;
+  width: 250px;
+  height: 44px;
+  line-height: 44px;
+}
+label {
+  position: absolute;
+ /* top: 0;
+  left: 0;*/
+  top:0;
+left:0;
+  color: #d3d3d3;
+  transition: 0.2s all;
+  cursor: text;
+}
+input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  padding: 0.5rem 0;
+  border-bottom: 2px solid #d3d3d3;
+  box-shadow: none;
+  color: #111;
+}
+input:invalid {
+  outline: 0;
+/*   color: #ff2300;
+   border-color: #ff2300;*/
+}
+input:focus,
+input:valid {
+  border-color: #17a589;
+}
+input:focus~label,
+input:valid~label {
+  font-size: 14px;
+  top: -24px;
+  color: #17a589;
+}

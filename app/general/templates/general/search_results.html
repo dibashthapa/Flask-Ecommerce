@@ -1,0 +1,19 @@
+{% include "general_base.html"}
+
+
+<div class="products-list">
+  {% for product_items in search_results['products'] :%}
+<div class="images" data-id="{{product_items['id']}}">
+  <img src="{{product_items['img_url']}}" height="250px" width="250px">
+  <div class="product-name"><a href="/products/groceries/{{product_items['name']}}">{{product_items['name']}}</a></div >
+</div>
+
+{% endfor %}
+</div>
+
+ </div>
+</div>
+<script src={{url_for('static', filename='js/header.js')}}></script>
+   <script src={{url_for('static', filename='js/search.js')}}></script>
+</body>
+</html>
