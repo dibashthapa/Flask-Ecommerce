@@ -1,6 +1,7 @@
 import sqlite3
+import os
+DATABASE = os.path.join(os.path.dirname(__file__), 'site.db')
 
-DATABASE= "site.db"
 
 class Database:
     def __init__(self):
@@ -27,17 +28,11 @@ class Product(Database):
         products = db.fetchall()
         return products
 
-class User(Database):
-    def __init__(self):
-        self.db= Database.get_cursor()
 
-    def add_user(self,name , email, password):
-        """
-        Add new User with name, 
-        email and pasword
-        """
-        db  = self.db
-        db.execute(f"INSERT INTO ")
+
+
+
+
 
 
 

@@ -1,4 +1,4 @@
-from flask import Flask , Blueprint , render_template, jsonify, request, abort
+from flask import Flask , Blueprint , render_template, jsonify, request, abort ,redirect, url_for
 from app.models import Product
 products_bp = Blueprint("products_bp", __name__, template_folder="templates/products")
 
