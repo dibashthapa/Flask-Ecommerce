@@ -12,8 +12,6 @@ def main():
 		if result == True:
 			session['email'] = email
 			return redirect(url_for("general_bp.home"))
-		else:
-			return "Incorrect Details"
 	return render_template("login.html", title="Login")
 
 @auth_bp.route("/register", methods=["GET","POST"])

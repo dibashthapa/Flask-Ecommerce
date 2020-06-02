@@ -87,10 +87,17 @@ $(document).ready(function() {
         <a href="#" class="icon icon-sm rounded-circle border"><i class="fa fa-user"></i></a>
         <div class="text">
           <span class="text-muted">Welcome!</span>
+          {% if not 'email' in session: %}
           <div> 
             <a href="/auth/login">Sign in</a> |  
             <a href="/auth/register"> Register</a>
           </div>
+          {%else%}
+          <div>
+            {{session['email']}}
+          </div>
+            {% endif %}
+          
         </div>
       </div>
     </div> <!-- widgets-wrap.// -->
