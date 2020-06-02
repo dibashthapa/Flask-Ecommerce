@@ -26,13 +26,13 @@ class Product:
     def show_all_items(self):
         cur = self.cursor
         sql = """
-        SELECT id,name,price, img_url FROM apparels
+        SELECT id,name,price, description,img_url FROM apparels
         UNION
-        SELECT id,name,price, img_url FROM fashion
+        SELECT id,name,price, description,img_url FROM fashion
         UNION
-        SELECT id,name, price, img_url FROM bicycles
+        SELECT id,name, price, description,img_url FROM bicycles
         UNION 
-        SELECT id,name, price, img_url FROM jewelry
+        SELECT id,name, price, description,img_url FROM jewelry
         ORDER BY name
          """
         cur.execute(sql)

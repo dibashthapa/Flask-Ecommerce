@@ -1,10 +1,12 @@
 from flask import Blueprint, Flask , jsonify, render_template, session, request, redirect, url_for
 from app.models import User
+from .forms import RegistrationForm, LoginForm
 auth_bp = Blueprint("auth_bp", __name__, template_folder="templates/auth")
 
 @auth_bp.route("/login", methods=["GET", "POST"])
 def main():
 	if request.method == "POST":
+		form = LoginForm()
 		user= User()
 		email = request.form['email']
 		password = request.form['password']
@@ -17,6 +19,7 @@ def main():
 @auth_bp.route("/register", methods=["GET","POST"])
 def signup():
 	if request.method == "POST":
+		form - LoginForm()
 		user= User()
 		fname = request.form['fname']
 		lname = request.form['lname']
