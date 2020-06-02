@@ -3,7 +3,7 @@ import os
 DATABASE = os.path.join(os.path.dirname(__file__), 'site.db')
 
 def connect(database = DATABASE):
-    c = sqlite3.connect(database)
+    c = sqlite3.connect(database, check_same_thread=False)
     c.row_factory = sqlite3.Row
     return c
 
