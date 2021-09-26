@@ -1,4 +1,4 @@
-from flask import Flask, Blueprint, render_template, request, jsonify, url_for, redirect
+from flask import Flask, Blueprint, render_template, request, abort
 
 import requests
 import json
@@ -6,6 +6,10 @@ general_bp = Blueprint("general_bp", __name__ , template_folder="templates/gener
 @general_bp.route("/")
 def home():
 	return render_template("index.html", title="Home")
+
+@general_bp.route("/404")
+def error():
+    abort(404)
 
 @general_bp.route("/search")
 def search():

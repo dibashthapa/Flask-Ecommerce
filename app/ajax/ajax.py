@@ -1,13 +1,11 @@
-from app.models import Product
-import traceback
-from flask import Flask , Blueprint, jsonify, request, abort
-import time
+from app.models import Jewelry
+from flask import  Blueprint, jsonify, request
 
 ajax_bp = Blueprint("ajax_bp", __name__)
 
 @ajax_bp.route("/search")
 def search_query():
     query = request.args.get("query")
-    product = Product()
-    product_items = product.show_all_items()
-    return jsonify([dict(p) for p in product_items if p['name'].lower().startswith(query)])
+    search_query = Jewelry.name.endswith(query)
+    product_items = Jewelry.query.filter_by(name=search_query).all()
+    return jsonify(product_items)

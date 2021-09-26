@@ -1,80 +1,93 @@
 {% include "base.html" %}
 
 <section class="section-content">
-<div class="container">
+  <div class="container">
+    <header class="section-heading">
+      <h6 class="section-title text-primary">
+        <small>Products/{{title.capitalize()}}</small>
+      </h6>
+    </header>
+    <!-- sect-heading -->
 
-<header class="section-heading">
-  <h6 class="section-title text-primary"> <small>Products/{{title.capitalize()}}</small></h6>
-</header><!-- sect-heading -->
-
-
-<div class="row">
-	{% for i in range(products|length//4+2):%}
-  <div class="col-md-3">
-    <div href="#" class="card card-product-grid">
-      <a href="#" class="img-wrap"> <img src="{{products[i].img_url}}" class="w-100	"> </a>
-      <figcaption class="info-wrap">
-        <a href="/products/{{title}}/{{products[i]['name']}}" class="title">{{products[i]['name'].capitalize()}}</a>
-        <div class="rating-wrap">
-          <ul class="rating-stars">
-            <li style="width:80%" class="stars-active"> 
-              <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-            </li>
-            <li>
-              <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 
-            </li>
-          </ul>
-          <span class="label-rating text-muted"> 34 reviws</span>
+    <div class="row">
+      {% for product in products.items %}
+      <div class="col-md-3">
+        <div href="#" class="card card-product-grid">
+          <a href="#" class="img-wrap">
+            <img src="{{product.img_url}}" class="w-100" />
+          </a>
+          <figcaption class="info-wrap">
+            <a href="/products/{{title}}/{{product['name']}}" class="title"
+              >{{product['name'].capitalize()}}</a
+            >
+            <div class="rating-wrap">
+              <ul class="rating-stars">
+                <li style="width: 80%" class="stars-active">
+                  <i class="fa fa-star"></i><i class="fa fa-star"></i
+                  ><i class="fa fa-star"></i><i class="fa fa-star"></i
+                  ><i class="fa fa-star"></i>
+                </li>
+                <li>
+                  <i class="fa fa-star"></i><i class="fa fa-star"></i
+                  ><i class="fa fa-star"></i><i class="fa fa-star"></i
+                  ><i class="fa fa-star"></i>
+                </li>
+              </ul>
+              <span class="label-rating text-muted"> 34 reviws</span>
+            </div>
+            <div class="price mt-1">{{product['price']}}</div>
+            <!-- price-wrap.// -->
+          </figcaption>
         </div>
-        <div class="price mt-1">{{products[i]['price']}}</div> <!-- price-wrap.// -->
-      </figcaption>
+      </div>
+      {% endfor %}
+    </div>
     </div>
   </div>
-{% endfor %}
-</div> <!-- row.// -->
-
-<div class="row">
-{% for i in range(products|length//4 +2 , products|length):%}
-  <div class="col-md-3 ">
-    <div href="#" class="card card-product-grid">
-      <a href="#" class="img-wrap"> <img src="{{products[i].img_url}}" class="w-100"> </a>
-      <figcaption class="info-wrap">
-        <a href="/products/{{title}}/{{products[i]['name']}}" class="title">{{products[i]['name'].capitalize()}}</a>
-        
-        <div class="rating-wrap">
-          <ul class="rating-stars">
-            <li style="width:80%" class="stars-active"> 
-              <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-            </li>
-            <li>
-              <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 
-            </li>
-          </ul>
-          <span class="label-rating text-muted"> 34 reviws</span>
-        </div>
-        <div class="price mt-1">{{products[i]['price']}}</div> <!-- price-wrap.// -->
-      </figcaption>
-    </div>
-  </div>
-{% endfor %}
-</div>
-</div> <!-- container .//  -->
+  <!-- container .//  -->
 </section>
 <!-- Pagination -->
-<nav aria-label="..."  >
-	<ul class="pagination pagination-sm justify-content-center">
-		    <li class="page-item">
-      <a class="page-link prev-btn" href="" tabindex="-1">Previous</a>
+<nav aria-label="...">
+  <ul class="pagination pagination-sm justify-content-center">
+ {% if products.has_prev %}
+    <li class="page-item"> 
+      <a class="page-link" href="?page={{products.prev_num}}">Previous</a>
     </li>
-    {% for i in range(1, length//8 + length%8):%}
-    {% if i<20 :%}
-	 <li class="page-item mx-1"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
-   {% endif %}
-      {%endfor %}
-   
+  {% else %}
     <li class="page-item">
-      <a class="page-link next-btn" href="">Next</a>
+      <a class="page-link btn disabled" href="#">Previous</a>
     </li>
-	</ul>
+  {% endif %}
+
+  {% for page_num in products.iter_pages() %}
+    {% if page_num %}
+      {% if page_num != products.page %}
+        <li class="page-item mx-1">
+          <a href="?page={{page_num}}" class="page-link">{{page_num}}</a>
+        </li>
+        {% else %}
+        <li class="active">
+          <a href="#" class="page-link">{{page_num}}</a>
+        </li>
+    {% endif %}
+
+    {% else %}
+  <li>
+           <span class="ellipsis" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis">…</span>
+       </li>
+    {% endif %}
+  
+  {% endfor %}
+
+  {% if products.has_next %}
+  <li class="page-item"> 
+    <a class="page-link" href="?page={{products.next_num}}">Next</a>
+  </li>
+  {% else %}
+  <li class="page-item">
+    <a class="page-link btn disabled" href="#">Next</a>
+  </li>
+  {% endif %}
+  </ul>
 </nav>
-<script src="/static/js/pagination.js"> </script>
+<script src="/static/js/pagination.js"></script>
