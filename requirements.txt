@@ -13,7 +13,7 @@ gunicorn==20.0.4
 idna==2.9
 iso8601==0.1.16
 itsdangerous==1.1.0
-Jinja2==2.11.2
+Jinja2==2.11.3
 MarkupSafe==1.1.1
 pypika-tortoise==0.1.1
 pytz==2021.1
