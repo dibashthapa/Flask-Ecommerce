@@ -1,7 +1,8 @@
 from app.models import Jewelry
-from flask import  Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request
 
 ajax_bp = Blueprint("ajax_bp", __name__)
+
 
 @ajax_bp.route("/search")
 def search_query():
