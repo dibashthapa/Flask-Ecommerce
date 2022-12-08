@@ -22,6 +22,6 @@ six==1.15.0
 SQLAlchemy==1.4.23
 tortoise-orm==0.17.7
 typing-extensions==3.10.0.2
-urllib3==1.25.9
+urllib3==1.26.5
 Werkzeug==1.0.1
 WTForms==2.3.3
