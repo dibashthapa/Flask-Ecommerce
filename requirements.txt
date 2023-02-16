@@ -23,5 +23,5 @@ SQLAlchemy==1.4.23
 tortoise-orm==0.17.7
 typing-extensions==3.10.0.2
 urllib3==1.26.5
-Werkzeug==1.0.1
+Werkzeug==2.2.3
 WTForms==2.3.3
